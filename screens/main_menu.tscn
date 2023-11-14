@@ -50,33 +50,43 @@ text = "Quit"
 
 [node name="XenMentality" type="LinkButton" parent="Panel"]
 layout_mode = 0
-offset_left = 961.0
-offset_top = 567.5
-offset_right = 1122.0
-offset_bottom = 607.5
+offset_left = 960.0
+offset_top = 592.5
+offset_right = 1121.0
+offset_bottom = 632.5
 text = "XenMentality Games"
 underline = 1
 uri = "https://xenmentality.itch.io"
 
 [node name="XenMentality2" type="LinkButton" parent="Panel"]
 layout_mode = 0
-offset_left = 986.0
-offset_top = 605.5
-offset_right = 1147.0
-offset_bottom = 645.5
+offset_left = 985.0
+offset_top = 619.5
+offset_right = 1146.0
+offset_bottom = 659.5
 text = "Cats by Luiz Melo"
 underline = 1
 uri = "https://luizmelo.itch.io"
 
+[node name="XenMentality3" type="LinkButton" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 616.0
+offset_right = 133.0
+offset_bottom = 642.0
+text = "View on Github"
+underline = 1
+uri = "https://github.com/stuttste/ThisCatOfMine"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Itch-io" type="Sprite2D" parent="."]
-position = Vector2(561, 254)
+position = Vector2(562, 282)
 scale = Vector2(0.0400389, 0.0390625)
 texture = ExtResource("2_5tvpe")
 
 [node name="Itch-io2" type="Sprite2D" parent="."]
-position = Vector2(561, 292)
+position = Vector2(562, 311)
 scale = Vector2(0.0400389, 0.0390625)
 texture = ExtResource("2_5tvpe")
 
