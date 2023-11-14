@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://b07mm5ep1i6qs"]
+
+[ext_resource type="Script" path="res://objects/mission.gd" id="1_cek1q"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_13pod"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1o46j"]
+radius = 0.5
+
+[node name="Mission" type="Node2D"]
+script = ExtResource("1_cek1q")
+
+[node name="MissionIcon" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(80.25, 80.25)
+texture = SubResource("PlaceholderTexture2D_13pod")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-4, -8)
+scale = Vector2(80.25, 80.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0027259, 0)
+shape = SubResource("CircleShape2D_1o46j")
+
+[node name="MissionUI" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LocationName" type="Label" parent="MissionUI"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -69.0
+offset_right = 38.0
+offset_bottom = -49.0
+theme_override_font_sizes/font_size = 12
+text = "LocationName"
+horizontal_alignment = 1
+
+[node name="Popout" type="Panel" parent="MissionUI"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = -39.0
+offset_right = 178.0
+offset_bottom = 135.0
+
+[node name="ResourceList" type="ItemList" parent="MissionUI/Popout"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 32.0
+offset_right = 134.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 13
+item_count = 2
+max_columns = 2
+item_0/text = "Cardboard:"
+item_1/text = "0 ~5"
+
+[node name="PopoutLocationName" type="Label" parent="MissionUI/Popout"]
+layout_mode = 0
+offset_right = 137.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 11
+text = "LocationName"
+horizontal_alignment = 1
+
+[node name="PopoutSkill" type="Label" parent="MissionUI/Popout"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 106.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 9
+text = "Skill"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

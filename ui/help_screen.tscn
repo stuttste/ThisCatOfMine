@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2r7dejp48db4"]
+
+[ext_resource type="Script" path="res://ui/help_screen.gd" id="1_4ggww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5r8h"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="HelpScreen" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4ggww")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.5
+offset_top = -325.5
+offset_right = 578.5
+offset_bottom = 325.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t5r8h")
+metadata/_edit_lock_ = true
+
+[node name="MainText" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 99.0
+offset_right = 1157.0
+offset_bottom = 558.0
+text = "The goal is to collect enough cats(200) to take back Milo's family while not running out of food.
+
+There is currently no max day count, so it will keep running until you reach the goal or food runs out.
+
+Assign your cats to locations and hit the \"Begin Missions\" button to collect resources. Hovering over a location or a cat will display stats for that resource. Each location also has a skill related to it. The higher your cat's skill level, the more resources will be collected from that location (up to a max of 50% increase at level 5). A cat has a chance to level up their skill by going to a location with the related skill.
+
+Each day will subtract 1 food, so make sure you have at least one before the next morning comes!
+
+Cats are fickle, so to keep them around, you will need to keep up your resources.
+
+Each day you have too little of a resource (currently 2/3 total cats; denoted by red text if in a shortage), you will lose 5 cats.
+
+Good luck!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 573.0
+offset_right = 659.0
+offset_bottom = 613.0
+text = "Back to Game
+"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 32
+text = "Help Screen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close_button_pressed"]

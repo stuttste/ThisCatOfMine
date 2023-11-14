@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc2jlch3sbcyn"]
+
+[ext_resource type="Script" path="res://objects/cat.gd" id="1_w362o"]
+[ext_resource type="Texture2D" uid="uid://bsair5m5h2ks1" path="res://art/Cat-1-Portrait.png" id="2_5ptm6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egf4d"]
+radius = 5.0
+
+[node name="Cat" type="Node2D"]
+script = ExtResource("1_w362o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_5ptm6")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("CircleShape2D_egf4d")
+
+[node name="CatUI" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -50.0
+offset_top = -130.0
+offset_right = 46.0
+offset_bottom = -52.0
+
+[node name="Popout" type="Panel" parent="CatUI"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -24.0
+offset_right = 94.0
+offset_bottom = 75.0
+
+[node name="PopoutSkillList" type="ItemList" parent="CatUI/Popout"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 12
+item_count = 2
+max_columns = 2
+item_0/text = "Dexterity:"
+item_1/text = "5"
+
+[node name="PopoutCatName" type="Label" parent="CatUI/Popout"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 83.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 13
+text = "CatName"
+horizontal_alignment = 1
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,267 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3a08rq8stbvw"]
+
+[ext_resource type="Script" path="res://screens/mission_board.gd" id="1_oy38l"]
+[ext_resource type="PackedScene" uid="uid://b07mm5ep1i6qs" path="res://objects/mission.tscn" id="1_usy2d"]
+[ext_resource type="PackedScene" uid="uid://cc2jlch3sbcyn" path="res://objects/cat.tscn" id="2_bm1ky"]
+
+[sub_resource type="GDScript" id="GDScript_yf1px"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Food: \" + str(GameManager.food)
+"
+
+[sub_resource type="GDScript" id="GDScript_cx0be"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Yarn: \" + str(GameManager.yarn)
+"
+
+[sub_resource type="GDScript" id="GDScript_4jvuy"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Straw: \" + str(GameManager.straw)
+"
+
+[sub_resource type="GDScript" id="GDScript_tihdu"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"CardBoard: \" + str(GameManager.cardboard)
+"
+
+[sub_resource type="GDScript" id="GDScript_pegpj"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Cats: \" + str(GameManager.cats) + \"/\" + str(GameManager.target_cats)
+"
+
+[sub_resource type="GDScript" id="GDScript_4lp3y"]
+script/source = "extends Label
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	text = \"Day \" + str(GameManager.day) + \" - \" + GameManager.day_part.to_pascal_case()
+"
+
+[node name="MissionBoard" type="Node2D"]
+script = ExtResource("1_oy38l")
+
+[node name="Missions" type="Node2D" parent="."]
+
+[node name="BackAlley" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(-276, -145)
+related_skill = "grit"
+resources = {
+"cardboard_max": 2,
+"cardboard_min": 0,
+"cats_max": 1,
+"cats_min": 0,
+"food_max": 0,
+"food_min": 0,
+"straw_max": 0,
+"straw_min": 0,
+"yarn_max": 2,
+"yarn_min": 0
+}
+
+[node name="ParkHunt" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(129, 118)
+location_name = "Park - Hunt"
+resources = {
+"cardboard_max": 0,
+"cardboard_min": 0,
+"cats_max": 1,
+"cats_min": 0,
+"food_max": 2,
+"food_min": 1,
+"straw_max": 0,
+"straw_min": 0,
+"yarn_max": 0,
+"yarn_min": 0
+}
+
+[node name="ParkRecruit" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(341, 180)
+location_name = "Park - Recruit"
+related_skill = "alpha_rating"
+resources = {
+"cardboard_max": 0,
+"cardboard_min": 0,
+"cats_max": 5,
+"cats_min": 0,
+"food_max": 0,
+"food_min": 0,
+"straw_max": 0,
+"straw_min": 0,
+"yarn_max": 0,
+"yarn_min": 0
+}
+
+[node name="PackagingPlant" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(-380, 110)
+location_name = "Packaging Plant"
+related_skill = "grit"
+resources = {
+"cardboard_max": 4,
+"cardboard_min": 0,
+"cats_max": 0,
+"cats_min": 0,
+"food_max": 0,
+"food_min": 0,
+"straw_max": 0,
+"straw_min": 0,
+"yarn_max": 4,
+"yarn_min": 0
+}
+
+[node name="Farm - Scavenge" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(190, -97)
+location_name = "Farm - Scavenge"
+related_skill = "grit"
+resources = {
+"cardboard_max": 0,
+"cardboard_min": 0,
+"cats_max": 0,
+"cats_min": 0,
+"food_max": 1,
+"food_min": 0,
+"straw_max": 5,
+"straw_min": 0,
+"yarn_max": 2,
+"yarn_min": 0
+}
+
+[node name="Farm - Hunt" parent="Missions" groups=["Mission"] instance=ExtResource("1_usy2d")]
+position = Vector2(409, -179)
+location_name = "Farm - Hunt"
+resources = {
+"cardboard_max": 0,
+"cardboard_min": 0,
+"cats_max": 0,
+"cats_min": 0,
+"food_max": 2,
+"food_min": 0,
+"straw_max": 2,
+"straw_min": 0,
+"yarn_max": 1,
+"yarn_min": 0
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -572.0
+offset_top = -322.0
+offset_right = 573.0
+offset_bottom = 322.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="FoodLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 37.0
+text = "Food: "
+script = SubResource("GDScript_yf1px")
+
+[node name="YarnLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 111.0
+offset_bottom = 59.0
+text = "Yarn: "
+script = SubResource("GDScript_cx0be")
+
+[node name="StrawLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 43.0
+offset_right = 111.0
+offset_bottom = 80.0
+text = "Straw: "
+script = SubResource("GDScript_4jvuy")
+
+[node name="CardboardLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 110.0
+offset_bottom = 100.0
+text = "Cardboard: "
+script = SubResource("GDScript_tihdu")
+
+[node name="CatsLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_top = 84.0
+offset_right = 110.0
+offset_bottom = 121.0
+text = "Cats: "
+script = SubResource("GDScript_pegpj")
+
+[node name="DayLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 3.0
+offset_right = 591.0
+offset_bottom = 26.0
+script = SubResource("GDScript_4lp3y")
+
+[node name="BeginMissions" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 514.0
+offset_right = 650.0
+offset_bottom = 545.0
+text = "Begin Missions"
+
+[node name="Help" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 1111.0
+offset_top = 7.0
+offset_right = 1139.0
+offset_bottom = 38.0
+text = "?"
+
+[node name="Cats" type="Node2D" parent="."]
+
+[node name="Milo" parent="Cats" groups=["Cat"] instance=ExtResource("2_bm1ky")]
+position = Vector2(-526, 287)
+cat_name = "Milo"
+dexterity = 0
+grit = 0
+alpha_rating = 1
+
+[node name="Felix" parent="Cats" groups=["Cat"] instance=ExtResource("2_bm1ky")]
+position = Vector2(-426, 287)
+cat_name = "Felix"
+texture_path = "res://art/Cat-2-Portrait.png"
+dexterity = 0
+grit = 2
+alpha_rating = 0
+
+[node name="Raya" parent="Cats" groups=["Cat"] instance=ExtResource("2_bm1ky")]
+position = Vector2(-326, 287)
+cat_name = "Raya"
+texture_path = "res://art/Cat-6-Portrait.png"
+dexterity = 2
+grit = 0
+alpha_rating = 0
+
+[connection signal="pressed" from="UI/BeginMissions" to="." method="_on_begin_missions_pressed"]
+[connection signal="pressed" from="UI/Help" to="." method="_on_help_pressed"]

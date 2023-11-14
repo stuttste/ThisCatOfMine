@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://s0quo4jupl8w"]
+
+[ext_resource type="Script" path="res://ui/intro_scene.gd" id="1_qejbg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ghct"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="IntroScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qejbg")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.5
+offset_right = 576.0
+offset_bottom = 324.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ghct")
+
+[node name="MainText" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+text = "The city can be a tough place for a cat.
+
+Milo, an orange tabby, has had his family taken from him due to the increase in animal control.
+
+Play as Milo and help him build a cat army to take his family back."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 619.5
+offset_right = 650.0
+offset_bottom = 645.5
+text = "Right-Click to Close"
+horizontal_alignment = 1
